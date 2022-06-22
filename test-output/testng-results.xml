@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2022-06-22T14:15:08 ICT" name="Default suite" finished-at="2022-06-22T14:15:47 ICT" duration-ms="38681">
+    <groups>
+    </groups>
+    <test started-at="2022-06-22T14:15:08 ICT" name="Default test" finished-at="2022-06-22T14:15:47 ICT" duration-ms="38681">
+      <class name="com.nexsoft.test.CreateEventTest">
+        <test-method is-config="true" signature="init()[pri:0, instance:com.nexsoft.test.CreateEventTest@2b40ff9c]" started-at="2022-06-22T14:15:08 ICT" name="init" finished-at="2022-06-22T14:15:28 ICT" duration-ms="19972" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- init -->
+        <test-method signature="addEvent()[pri:1, instance:com.nexsoft.test.CreateEventTest@2b40ff9c]" started-at="2022-06-22T14:15:28 ICT" name="addEvent" finished-at="2022-06-22T14:15:29 ICT" duration-ms="1297" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addEvent -->
+        <test-method signature="createEvent()[pri:2, instance:com.nexsoft.test.CreateEventTest@2b40ff9c]" started-at="2022-06-22T14:15:29 ICT" name="createEvent" finished-at="2022-06-22T14:15:47 ICT" duration-ms="17308" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createEvent -->
+      </class> <!-- com.nexsoft.test.CreateEventTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
