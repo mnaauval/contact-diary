@@ -11,6 +11,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
@@ -22,44 +23,52 @@ public class NewEventActivity {
 	private TouchAction touchAct;
 	private DateHandler dateHdl;
 
-	@FindBy(id = "com.apozas.contactdiary:id/eventname_input")
-	private WebElement evName;
-	@FindBy(id = "com.apozas.contactdiary:id/eventplace_input")
-	private WebElement evPlace;
-//	@FindBy(id = "com.apozas.contactdiary:id/eventdate_input")
-//	private WebElement pDateStart;
-//	@FindBy(id = "com.apozas.contactdiary:id/endeventdate_input")
-//	private WebElement pDateEnd;
-//	@FindBy(id = "android:id/date_picker_header_year")
-//	private WebElement pYear;
-//	@FindBy(id = "//android.view.View[@content-desc=\"09 June 2016\"]")
-//	private WebElement date;
-	@FindBy(id = "com.apozas.contactdiary:id/event_indoor_outdoor")
-	private List<WebElement> pTypeRadio;
-	@FindBy(id = "com.apozas.contactdiary:id/event_indoors")
-	private WebElement pTypeIndoors;
-	@FindBy(id = "com.apozas.contactdiary:id/event_mitigation")
-	private WebElement evMitigate;
-	@FindBy(xpath = "//android.widget.CheckedTextView[1]")
-	private WebElement check1;
-	@FindBy(xpath = "//android.widget.CheckedTextView[2]")
-	private WebElement check2;
-	@FindBy(xpath = "//android.widget.CheckedTextView[3]")
-	private WebElement check3;
-	@FindBy(xpath = "//android.widget.CheckedTextView[4]")
-	private WebElement check4;
-	@FindBy(id = "android:id/button2")
-	private WebElement layCancel;
-	@FindBy(id = "android:id/button1")
-	private WebElement layOk;
-	@FindBy(id = "com.apozas.contactdiary:id/eventpeople_input")
-	private WebElement evPeople;
-	@FindBy(id = "com.apozas.contactdiary:id/eventphone_input")
-	private WebElement evContact;
-	@FindBy(id = "com.apozas.contactdiary:id/eventnotes_input")
-	private WebElement evNotes;
-	@FindBy(id = "com.apozas.contactdiary:id/okButton_AddEvent")
-	private WebElement addEvBtn;
+	@AndroidFindBy(id = "com.apozas.contactdiary:id/eventname_input")
+	public WebElement txtName;
+	@AndroidFindBy(id = "com.apozas.contactdiary:id/eventplace_input")
+	public WebElement txtPlace;
+	@AndroidFindBy(id = "com.apozas.contactdiary:id/eventdate_input")
+	private WebElement startDate;
+	@AndroidFindBy(id = "com.apozas.contactdiary:id/endeventdate_input")
+	private WebElement endDate;
+	@AndroidFindBy(id = "com.apozas.contactdiary:id/eventinittime_input")
+	private WebElement startTime;
+	@AndroidFindBy(id = "com.apozas.contactdiary:id/eventendtime_input")
+	private WebElement endTime;
+	@AndroidFindBy(id = "android:id/toggle_mode")
+	private WebElement toggleTime;
+	@AndroidFindBy(id = "android:id/input_hour")
+	private WebElement inputHour;
+	@AndroidFindBy(id = "android:id/input_minute")
+	private WebElement inputMinute;
+	@AndroidFindBy(id = "android:id/label_error")
+	private WebElement lblTimeError;
+	@AndroidFindBy(id = "com.apozas.contactdiary:id/event_indoor_outdoor")
+	private List<WebElement> radioType;
+	@AndroidFindBy(id = "com.apozas.contactdiary:id/event_indoors")
+	public WebElement typeIndoors;
+	@AndroidFindBy(id = "com.apozas.contactdiary:id/event_mitigation")
+	private WebElement fieldMitigate;
+	@AndroidFindBy(xpath = "//android.widget.CheckedTextView[1]")
+	private WebElement mitigate1;
+	@AndroidFindBy(xpath = "//android.widget.CheckedTextView[2]")
+	private WebElement mitigate2;
+	@AndroidFindBy(xpath = "//android.widget.CheckedTextView[3]")
+	private WebElement mitigate3;
+	@AndroidFindBy(xpath = "//android.widget.CheckedTextView[4]")
+	private WebElement mitigate4;
+	@AndroidFindBy(id = "android:id/button2")
+	private WebElement btnCancel;
+	@AndroidFindBy(id = "android:id/button1")
+	private WebElement btnOk;
+	@AndroidFindBy(id = "com.apozas.contactdiary:id/eventpeople_input")
+	public WebElement txtPeople;
+	@AndroidFindBy(id = "com.apozas.contactdiary:id/eventphone_input")
+	public WebElement txtContact;
+	@AndroidFindBy(id = "com.apozas.contactdiary:id/eventnotes_input")
+	public WebElement txtNotes;
+	@AndroidFindBy(id = "com.apozas.contactdiary:id/okButton_AddEvent")
+	public WebElement btnSave;
 
 	public NewEventActivity(AndroidDriver driver) {
 		this.driver = driver;
@@ -68,22 +77,31 @@ public class NewEventActivity {
 		dateHdl = new DateHandler(driver);
 	}
 
-	public void inputData(String name, String place, String people, String contact, String notes) {
-		System.out.println("New Event");
-		driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
-		evName.sendKeys(name);
-		evPlace.sendKeys(place);
-		dateHdl.dateStartHandler(285, 1165, 285, 1800, 590, 900, "20", "June", "2016");
-		dateHdl.dateEndHandler(590, 900, "30", "June", "2016");
-		evPeople.sendKeys(people);
-		evContact.sendKeys(contact);
-		pTypeIndoors.click();
-		evMitigate.click();
-		check1.click();
-		check3.click();
-		layOk.click();
-		evNotes.sendKeys(notes);
-		driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
-		addEvBtn.click();
+	public void setStartDate(String date, String month, String year) {
+//		dateHdl.dateStartHandler("24", "June", "2022");
+		dateHdl.dateStartHandler(date, month, year);
+	}
+
+	public void setEndDate(String date, String month, String year) {
+//		dateHdl.dateEndHandler("30", "June", "2022");
+		dateHdl.dateEndHandler(date, month, year);
+	}
+
+	public void setMitigation(List<String> choice) {
+		fieldMitigate.click();
+
+		for (String no : choice) {
+
+			String xpath = "/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/"
+					+ "android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.ListView/"
+					+ "android.widget.CheckedTextView[" + no + "]";
+
+			driver.findElement(By.xpath(xpath)).click();
+		}
+		btnOk.click();
+	}
+
+	public void setDate(String date) {
+		dateHdl.setDate(date);
 	}
 }

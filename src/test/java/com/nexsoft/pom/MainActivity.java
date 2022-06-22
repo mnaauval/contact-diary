@@ -1,7 +1,10 @@
 package com.nexsoft.pom;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
@@ -27,9 +30,29 @@ public class MainActivity {
 		touchAct = new TouchAction(driver);
 	}
 
-	public void addEvent() {
-		System.out.println("Main");
+	public void clickAddBtn() {
+		System.out.println("Add Btn");
 		btnAddEvent.click();
+	}
+
+	public void clickNewEventBtn() {
+		System.out.println("New Event Btn");
 		touchAct.tap(PointOption.point(950, 1825)).perform();
 	}
+
+	public <T> List<String> getEventName(List<String> lstEv) {
+		List<String> lstEvName = new ArrayList<String>();
+		for (String i : lstEv) {
+//			String xpath = "//android.widget.LinearLayout[" + i + "]/android.widget.LinearLayout/android.widget.TextView";
+			String xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout"
+					+ "/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout"
+					+ "/android.view.ViewGroup/android.view.ViewGroup/android.widget.LinearLayout[1]"
+					+ "/android.widget.ListView/android.widget.LinearLayout[" + i + "]"
+					+ "/android.widget.LinearLayout/android.widget.TextView";
+			System.out.println(driver.findElement(By.xpath(xpath)).getText());
+			lstEvName.add(driver.findElement(By.xpath(xpath)).getText());
+		}
+		return lstEvName;
+	}
+
 }

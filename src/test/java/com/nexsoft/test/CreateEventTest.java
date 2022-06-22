@@ -2,8 +2,11 @@ package com.nexsoft.test;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -18,6 +21,7 @@ public class CreateEventTest {
 	private DesiredCapabilities capabilities;
 	private MainActivity mainAct;
 	private NewEventActivity newEv;
+	private List<String> choice;
 
 	@BeforeTest
 	public void init() {
@@ -37,16 +41,61 @@ public class CreateEventTest {
 		}
 		mainAct = new MainActivity(driver);
 		newEv = new NewEventActivity(driver);
+		choice = new ArrayList<String>();
+		choice.add("1");
+		choice.add("3");
 	}
 
 	@Test(priority = 1)
-	public void addEvent() {
-		System.out.println("TEST");
-		mainAct.addEvent();
+	public void createEvent1() {
+		System.out.println("create event 1");
+		mainAct.clickAddBtn();
+		mainAct.clickNewEventBtn();
+		newEv.txtName.sendKeys("Sparing1");
+		newEv.txtPlace.sendKeys("Basecamp Tundra");
+		newEv.setStartDate("24", "June", "2022");
+		newEv.setEndDate("30", "June", "2022");
+		newEv.txtPeople.sendKeys("All Tundra Squad");
+		newEv.txtContact.sendKeys("089709870870");
+		newEv.typeIndoors.click();
+		newEv.setMitigation(choice);
+		newEv.txtNotes.sendKeys("All equipment");
+		newEv.btnSave.click();
 	}
 
 	@Test(priority = 2)
-	public void createEvent() {
-		newEv.inputData("Mabar", "Basecamp", "All OG", "08973231212", "Don't be late, bring snacks");
+	public void createEvent2() {
+		System.out.println("create event 2");
+		mainAct.clickNewEventBtn();
+		newEv.txtName.sendKeys("Sparing2");
+		newEv.txtPlace.sendKeys("Basecamp Tundra2");
+		newEv.setStartDate("24", "June", "2022");
+		newEv.setEndDate("30", "June", "2022");
+		newEv.txtPeople.sendKeys("All Tundra2 Squad");
+		newEv.txtContact.sendKeys("089709870870");
+		newEv.typeIndoors.click();
+		newEv.setMitigation(choice);
+		newEv.txtNotes.sendKeys("All equipment2");
+		newEv.btnSave.click();
+	}
+
+	@Test(priority = 3, enabled = false)
+	public void createEventTest() {
+		mainAct.clickAddBtn();
+		mainAct.clickNewEventBtn();
+		newEv.setDate("05072022");
+	}
+
+	@Test(priority = 4)
+	public void getEventName() {
+		List<String> lstEvName = new ArrayList<String>();
+		lstEvName.add("1");
+		lstEvName.add("2");
+		List<String> lstEvNameAct = new ArrayList<String>();
+		lstEvNameAct = mainAct.getEventName(lstEvName);
+		List<String> lstEvNameExp = new ArrayList<String>();
+		lstEvNameExp.add("📅   Sparing1");
+		lstEvNameExp.add("📅   Sparing2");
+		Assert.assertEquals(lstEvNameAct, lstEvNameExp);
 	}
 }
