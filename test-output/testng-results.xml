@@ -1,96 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="1" total="4" passed="2" failed="1" skipped="0">
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2022-06-23T09:35:44 ICT" name="Default suite" finished-at="2022-06-23T09:36:39 ICT" duration-ms="54976">
+  <suite started-at="2022-06-23T13:21:01 ICT" name="Default suite" finished-at="2022-06-23T13:21:28 ICT" duration-ms="27370">
     <groups>
     </groups>
-    <test started-at="2022-06-23T09:35:44 ICT" name="Default test" finished-at="2022-06-23T09:36:39 ICT" duration-ms="54976">
-      <class name="com.nexsoft.test.CreateEventTest">
-        <test-method is-config="true" signature="init()[pri:0, instance:com.nexsoft.test.CreateEventTest@74e28667]" started-at="2022-06-23T09:35:44 ICT" name="init" finished-at="2022-06-23T09:36:03 ICT" duration-ms="19106" status="PASS">
+    <test started-at="2022-06-23T13:21:01 ICT" name="Default test" finished-at="2022-06-23T13:21:28 ICT" duration-ms="27370">
+      <class name="com.nexsoft.test.CameraTestTest">
+        <test-method is-config="true" signature="init()[pri:0, instance:com.nexsoft.test.CameraTestTest@451001e5]" started-at="2022-06-23T13:21:01 ICT" name="init" finished-at="2022-06-23T13:21:19 ICT" duration-ms="17819" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- init -->
-        <test-method signature="createEvent1()[pri:1, instance:com.nexsoft.test.CreateEventTest@74e28667]" started-at="2022-06-23T09:36:03 ICT" name="createEvent1" finished-at="2022-06-23T09:36:21 ICT" duration-ms="17905" status="PASS">
+        <test-method signature="createScreenshotTest()[pri:1, instance:com.nexsoft.test.CameraTestTest@451001e5]" started-at="2022-06-23T13:21:19 ICT" name="createScreenshotTest" finished-at="2022-06-23T13:21:28 ICT" duration-ms="9468" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- createEvent1 -->
-        <test-method signature="createEvent2()[pri:2, instance:com.nexsoft.test.CreateEventTest@74e28667]" started-at="2022-06-23T09:36:21 ICT" name="createEvent2" finished-at="2022-06-23T09:36:39 ICT" duration-ms="17669" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- createEvent2 -->
-        <test-method signature="getEventName()[pri:4, instance:com.nexsoft.test.CreateEventTest@74e28667]" started-at="2022-06-23T09:36:39 ICT" name="getEventName" finished-at="2022-06-23T09:36:39 ICT" duration-ms="199" status="FAIL">
-          <exception class="org.openqa.selenium.NoSuchElementException">
-            <message>
-              <![CDATA[An element could not be located on the page using the given search parameters.
-For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
-Build info: version: '4.2.2', revision: '683ccb65d6'
-System info: host: 'DESKTOP-S76SA9N', ip: '10.0.0.217', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.15'
-Driver info: io.appium.java_client.android.AndroidDriver
-Command: [65a89e30-7f8b-4842-b4e9-b57e7f028a16, findElement {using=xpath, value=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.LinearLayout[1]/android.widget.ListView/android.widget.LinearLayout[1]/android.widget.LinearLayout/android.widget.TextView}]
-Capabilities {appium:appActivity: com.apozas.contactdiary.Mai..., appium:appPackage: com.apozas.contactdiary, appium:databaseEnabled: false, appium:desired: {appActivity: com.apozas.contactdiary.Mai..., appPackage: com.apozas.contactdiary, platformName: android, platformVersion: 11.0}, appium:deviceApiLevel: 30, appium:deviceManufacturer: Xiaomi, appium:deviceModel: Redmi Note 9 Pro, appium:deviceName: 52c5c997, appium:deviceScreenDensity: 440, appium:deviceScreenSize: 1080x2400, appium:deviceUDID: 52c5c997, appium:javascriptEnabled: true, appium:locationContextEnabled: false, appium:networkConnectionEnabled: true, appium:pixelRatio: 2.75, appium:platformVersion: 11, appium:statBarHeight: 102, appium:takesScreenshot: true, appium:viewportRect: {height: 2152, left: 0, top: 102, width: 1080}, appium:warnings: {}, appium:webStorageEnabled: false, platformName: ANDROID}
-Session ID: 65a89e30-7f8b-4842-b4e9-b57e7f028a16]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[org.openqa.selenium.NoSuchElementException: An element could not be located on the page using the given search parameters.
-For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
-Build info: version: '4.2.2', revision: '683ccb65d6'
-System info: host: 'DESKTOP-S76SA9N', ip: '10.0.0.217', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.15'
-Driver info: io.appium.java_client.android.AndroidDriver
-Command: [65a89e30-7f8b-4842-b4e9-b57e7f028a16, findElement {using=xpath, value=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.LinearLayout[1]/android.widget.ListView/android.widget.LinearLayout[1]/android.widget.LinearLayout/android.widget.TextView}]
-Capabilities {appium:appActivity: com.apozas.contactdiary.Mai..., appium:appPackage: com.apozas.contactdiary, appium:databaseEnabled: false, appium:desired: {appActivity: com.apozas.contactdiary.Mai..., appPackage: com.apozas.contactdiary, platformName: android, platformVersion: 11.0}, appium:deviceApiLevel: 30, appium:deviceManufacturer: Xiaomi, appium:deviceModel: Redmi Note 9 Pro, appium:deviceName: 52c5c997, appium:deviceScreenDensity: 440, appium:deviceScreenSize: 1080x2400, appium:deviceUDID: 52c5c997, appium:javascriptEnabled: true, appium:locationContextEnabled: false, appium:networkConnectionEnabled: true, appium:pixelRatio: 2.75, appium:platformVersion: 11, appium:statBarHeight: 102, appium:takesScreenshot: true, appium:viewportRect: {height: 2152, left: 0, top: 102, width: 1080}, appium:warnings: {}, appium:webStorageEnabled: false, platformName: ANDROID}
-Session ID: 65a89e30-7f8b-4842-b4e9-b57e7f028a16
-at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
-at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:53)
-at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:184)
-at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:180)
-at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:588)
-at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:162)
-at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:60)
-at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:406)
-at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:398)
-at com.nexsoft.pom.main.MainActivity.getEventName(MainActivity.java:51)
-at com.nexsoft.test.CreateEventTest.getEventName(CreateEventTest.java:100)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
-at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:677)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:221)
-at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
-at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:962)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:194)
-at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
-at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-at org.testng.TestRunner.privateRun(TestRunner.java:806)
-at org.testng.TestRunner.run(TestRunner.java:601)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:433)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:427)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:387)
-at org.testng.SuiteRunner.run(SuiteRunner.java:330)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1256)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1176)
-at org.testng.TestNG.runSuites(TestNG.java:1099)
-at org.testng.TestNG.run(TestNG.java:1067)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-]]>
-            </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.NoSuchElementException -->
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- getEventName -->
-      </class> <!-- com.nexsoft.test.CreateEventTest -->
+        </test-method> <!-- createScreenshotTest -->
+      </class> <!-- com.nexsoft.test.CameraTestTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

@@ -3,12 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.nexsoft.test.CreateEventTest">
+      <class name="com.nexsoft.test.CameraTestTest">
         <methods>
-          <include name="getEventName"/>
           <include name="init"/>
+          <include name="createScreenshotTest"/>
         </methods>
-      </class> <!-- com.nexsoft.test.CreateEventTest -->
+      </class> <!-- com.nexsoft.test.CameraTestTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

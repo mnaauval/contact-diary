@@ -1,17 +1,22 @@
 package com.nexsoft.test;
 
+import static org.testng.Assert.assertTrue;
+
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import com.nexsoft.pom.activity.MainActivity;
 import com.nexsoft.pom.activity.NewEventActivity;
-import com.nexsoft.pom.main.MainActivity;
 
 import io.appium.java_client.android.AndroidDriver;
 
@@ -28,7 +33,7 @@ public class CreateEventTest {
 		capabilities = new DesiredCapabilities();
 		capabilities.setCapability("platformName", "Android");
 		capabilities.setCapability("platformVersion", "11.0");
-//		capabilities.setCapability("uid", "52c5c997");
+		capabilities.setCapability("uid", "52c5c997");
 //		capabilities.setCapability("uid", "emulator-5554");
 		capabilities.setCapability("appPackage", "com.apozas.contactdiary");
 		capabilities.setCapability("appActivity", "com.apozas.contactdiary.MainActivity");
@@ -55,7 +60,7 @@ public class CreateEventTest {
 		newEv.txtPlace.sendKeys("Basecamp Tundra");
 //		newEv.setStartDate("24", "June", "2022");
 //		newEv.setEndDate("30", "June", "2022");
-		newEv.setStartDate("25062022");
+		newEv.setStartDate("05072022");
 		newEv.setEndDate("05082022");
 		newEv.txtPeople.sendKeys("All Tundra Squad");
 		newEv.txtContact.sendKeys("089709870870");
@@ -63,6 +68,7 @@ public class CreateEventTest {
 		newEv.setMitigation(choice);
 		newEv.txtNotes.sendKeys("All equipment");
 		newEv.btnSave.click();
+		driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
 	}
 
 	@Test(priority = 2)
@@ -73,7 +79,7 @@ public class CreateEventTest {
 		newEv.txtPlace.sendKeys("Basecamp Tundra2");
 //		newEv.setStartDate("24", "June", "2022");
 //		newEv.setEndDate("30", "June", "2022");
-		newEv.setStartDate("25062022");
+		newEv.setStartDate("05072022");
 		newEv.setEndDate("05082022");
 		newEv.txtPeople.sendKeys("All Tundra2 Squad");
 		newEv.txtContact.sendKeys("089709870870");
@@ -81,6 +87,7 @@ public class CreateEventTest {
 		newEv.setMitigation(choice);
 		newEv.txtNotes.sendKeys("All equipment2");
 		newEv.btnSave.click();
+		driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
 	}
 
 	@Test(priority = 3, enabled = false)
@@ -96,12 +103,29 @@ public class CreateEventTest {
 		List<String> lstEvName = new ArrayList<String>();
 		lstEvName.add("1");
 		lstEvName.add("2");
-		List<String> lstEvNameAct = new ArrayList<String>();
-		lstEvNameAct = mainAct.getEventName(lstEvName);
+		List<String> lstEvNameActl = new ArrayList<String>();
+		lstEvNameActl = mainAct.getEventName(lstEvName);
+		List<String> lstEvNameExpt = new ArrayList<String>();
+		lstEvNameExpt.add("📅   Sparing1");
+		lstEvNameExpt.add("📅   Sparing2");
+		Assert.assertEquals(lstEvNameActl, lstEvNameExpt);
+	}
 
-		List<String> lstEvNameExp = new ArrayList<String>();
-		lstEvNameExp.add("📅   Sparing1");
-		lstEvNameExp.add("📅   Sparing2");
-		Assert.assertEquals(lstEvNameAct, lstEvNameExp);
+	@Test(priority = 5)
+	public void getEventListName() {
+		List<WebElement> lstElement = driver.findElements(
+				By.xpath("//android.widget.TextView[@resource-id='com.apozas.contactdiary:id/list_item']"));
+
+//		String unknownChar = "👤   ";
+		String unknownChar = "📅   ";
+		boolean checkData = false;
+		for (WebElement webElement : lstElement) {
+			String nama = webElement.getText().replace(unknownChar, "");
+			if (nama.equalsIgnoreCase("Sparing1")) {
+				checkData = true;
+				break;
+			}
+		}
+		assertTrue(checkData);
 	}
 }

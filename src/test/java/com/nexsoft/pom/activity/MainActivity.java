@@ -1,4 +1,4 @@
-package com.nexsoft.pom.main;
+package com.nexsoft.pom.activity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +37,11 @@ public class MainActivity {
 
 	public void clickNewEventBtn() {
 		System.out.println("New Event Btn");
-		touchAct.tap(PointOption.point(950, 1825)).perform();
+		if (driver.getCapabilities().getCapability("uid").toString().equals("52c5c997")) {
+			touchAct.tap(PointOption.point(950, 1825)).perform();
+		} else if (driver.getCapabilities().getCapability("uid").toString().equals("emulator-5554")) {
+			touchAct.tap(PointOption.point(950, 1520)).perform();
+		}
 	}
 
 	public <T> List<String> getEventName(List<String> lstEv) {

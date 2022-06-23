@@ -92,7 +92,7 @@ public class DateHandler {
 		layOk.click();
 	}
 
-	public void setDate(String dateInput) {
+	public void setStartDate(String dateInput) {
 		pDateStart.click();
 		String date = headDate.getText();
 		String year = pYear.getText();
@@ -153,7 +153,69 @@ public class DateHandler {
 		driver.findElement(By.xpath("//android.view.View[@content-desc=\"" + dateFormat.format(dateUsers) + "\"]"))
 				.click();
 		layOk.click();
-
+	}
+	
+	public void setEndDate(String dateInput) {
+		pDateStart.click();
+		String date = headDate.getText();
+		String year = pYear.getText();
+		System.out.println(date + " " + year);
+		
+		Date dateCalendar = null;
+		try {
+//			EEE, MMM d yyyy
+//			Wed, Jun 1 2022
+			dateCalendar = new SimpleDateFormat("EEE, MMM d yyyy", Locale.US).parse(date + " " + year);
+		} catch (ParseException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		
+		Date dateUsers = null;
+		try {
+			dateUsers = new SimpleDateFormat("ddMMyyy", Locale.US).parse(dateInput);
+		} catch (ParseException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		
+		int currYear = dateCalendar.getYear();
+		int currMonth = dateCalendar.getMonth();
+		
+		int targetYear = dateUsers.getYear();
+		int targetMonth = dateUsers.getMonth();
+		
+		int stepYear = Math.abs((currYear - targetYear) * 12);
+		int stepMonth = Math.abs((currMonth - targetMonth));
+		
+		int step = stepYear + stepMonth;
+		System.out.println(stepYear + " " + stepMonth + " " + step);
+		if (currYear < targetYear) {
+			for (int i = 0; i < step; i++) {
+				nextYearBtn.click();
+			}
+		} else if (currYear > targetYear) {
+			for (int i = 0; i < step; i++) {
+				prevYearBtn.click();
+			}
+		}
+		
+		if (stepYear == 0) {
+			if (currMonth < targetMonth) {
+				for (int i = 0; i < step; i++) {
+					nextYearBtn.click();
+				}
+			} else if (currMonth > targetMonth) {
+				for (int i = 0; i < step; i++) {
+					prevYearBtn.click();
+				}
+			}
+		}
+		
+		DateFormat dateFormat = new SimpleDateFormat("dd MMMM yyyy", Locale.US);
+		driver.findElement(By.xpath("//android.view.View[@content-desc=\"" + dateFormat.format(dateUsers) + "\"]"))
+		.click();
+		layOk.click();
 	}
 
 }

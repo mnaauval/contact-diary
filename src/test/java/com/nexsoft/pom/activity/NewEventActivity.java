@@ -85,17 +85,18 @@ public class NewEventActivity {
 		for (String no : choice) {
 			String xpath = "/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/"
 					+ "android.widget.FrameLayout/android.widget.LinearLayout/"
-					+ "android.widget.FrameLayout/android.widget.ListView/"
-					+ "android.widget.CheckedTextView[" + no + "]";
+					+ "android.widget.FrameLayout/android.widget.ListView/" + "android.widget.CheckedTextView[" + no
+					+ "]";
 			driver.findElement(By.xpath(xpath)).click();
 		}
 		btnOk.click();
 	}
 
 	public void setStartDate(String date) {
-		dateHdl.setDate(date);
+		dateHdl.setStartDate(date);
 	}
+
 	public void setEndDate(String date) {
-		dateHdl.setDate(date);
+		dateHdl.setEndDate(date);
 	}
 }
