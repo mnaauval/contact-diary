@@ -1,4 +1,4 @@
-package com.nexsoft.pom.activity;
+package com.nexsoft.pom;
 
 import java.util.List;
 
@@ -6,18 +6,15 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
-import com.nexsoft.pom.handler.DateHandler;
-
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 
-public class NewEventActivity {
+public class NewEventActivity extends DateHandler {
 
 	private AndroidDriver driver;
-	private DateHandler dateHdl;
 
-	@AndroidFindBy(id = "//android.widget.TextView[@text='New event']")
+	@AndroidFindBy(xpath = "//android.view.ViewGroup/android.widget.TextView")
 	public WebElement lblNew;
 	@AndroidFindBy(id = "com.apozas.contactdiary:id/eventname_input")
 	public WebElement txtName;
@@ -67,19 +64,22 @@ public class NewEventActivity {
 	public WebElement btnSave;
 
 	public NewEventActivity(AndroidDriver driver) {
+		super(driver);
+		// TODO Auto-generated constructor stub
 		this.driver = driver;
 		PageFactory.initElements(new AppiumFieldDecorator(driver), this);
-		dateHdl = new DateHandler(driver);
 	}
 
-	public void setStartDate(String date, String month, String year) {
-//		dateHdl.dateStartHandler("24", "June", "2022");
-		dateHdl.dateStartHandler(date, month, year);
+	@Override
+	public final void setStartDate(String dateInput) {
+		// TODO Auto-generated method stub
+		super.setStartDate(dateInput);
 	}
 
-	public void setEndDate(String date, String month, String year) {
-//		dateHdl.dateEndHandler("30", "June", "2022");
-		dateHdl.dateEndHandler(date, month, year);
+	@Override
+	public final void setEndDate(String dateInput) {
+		// TODO Auto-generated method stub
+		super.setEndDate(dateInput);
 	}
 
 	public void setMitigation(List<String> choice) {
@@ -94,11 +94,4 @@ public class NewEventActivity {
 		btnOk.click();
 	}
 
-	public void setStartDate(String date) {
-		dateHdl.setStartDate(date);
-	}
-
-	public void setEndDate(String date) {
-		dateHdl.setEndDate(date);
-	}
 }

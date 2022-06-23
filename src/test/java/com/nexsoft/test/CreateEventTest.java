@@ -15,8 +15,8 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import com.nexsoft.pom.activity.MainActivity;
-import com.nexsoft.pom.activity.NewEventActivity;
+import com.nexsoft.pom.MainActivity;
+import com.nexsoft.pom.NewEventActivity;
 
 import io.appium.java_client.android.AndroidDriver;
 

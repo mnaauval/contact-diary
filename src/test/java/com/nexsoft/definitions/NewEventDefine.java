@@ -1,19 +1,23 @@
-package com.nexsoft.definition;
+package com.nexsoft.definitions;
 
 import static org.testng.Assert.assertTrue;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
-import com.nexsoft.pom.activity.MainActivity;
-import com.nexsoft.pom.activity.NewEventActivity;
+import com.nexsoft.pom.MainActivity;
+import com.nexsoft.pom.NewEventActivity;
 
 import io.appium.java_client.android.AndroidDriver;
 import io.cucumber.java.Before;
@@ -29,6 +33,7 @@ public class NewEventDefine {
 	private MainActivity mainAct;
 	private NewEventActivity newEv;
 	private List<String> choice;
+	private WebDriverWait wait;
 
 	@Before
 	public void init() {
@@ -51,6 +56,7 @@ public class NewEventDefine {
 		choice = new ArrayList<String>();
 		choice.add("1");
 		choice.add("3");
+		wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 	}
 
 	@Given("User at Main Activity")
@@ -58,6 +64,7 @@ public class NewEventDefine {
 		String actl = mainAct.lblDiary.getText();
 		String expt = "Contact Diary";
 		Assert.assertEquals(actl, expt);
+		System.out.println(actl);
 	}
 
 	@When("User tap add button")
@@ -72,27 +79,34 @@ public class NewEventDefine {
 
 	@And("User go to New Event Activity")
 	public void atEventActivity() {
-//		String actl = newEv.lblNew.getText();
-//		String expt = "New event";
-//		Assert.assertEquals(actl, expt);
+		String actl = newEv.lblNew.getText();
+		String expt = "New event";
+		Assert.assertEquals(actl, expt);
+		System.out.println(actl);
 	}
 
 	@And("User input even name {string} and event place {string}")
 	public void inputNameAndPlace(String name, String place) {
 		newEv.txtName.sendKeys(name);
 		newEv.txtPlace.sendKeys(place);
+		System.out.println(name);
+		System.out.println(place);
 	}
 
 	@And("User input start date {string} and end date {string}")
 	public void inputDate(String start, String end) {
 		newEv.setStartDate(start);
 		newEv.setEndDate(end);
+		System.out.println(start);
+		System.out.println(end);
 	}
 
 	@And("User input companions {string} and phone {string}")
 	public void inputPeopleAndPhone(String people, String phone) {
 		newEv.txtPeople.sendKeys(people);
 		newEv.txtContact.sendKeys(phone);
+		System.out.println(people);
+		System.out.println(phone);
 	}
 
 	@And("User choose encounter type and prevention type")
@@ -104,6 +118,7 @@ public class NewEventDefine {
 	@And("User input notes {string}")
 	public void inputNotes(String notes) {
 		newEv.txtNotes.sendKeys(notes);
+		System.out.println(notes);
 	}
 
 	@Then("User save new event")
@@ -112,18 +127,18 @@ public class NewEventDefine {
 	}
 
 	@And("User showed in Main Activity")
-	public void showUsers() {
-		System.out.println("TOOOOOODDDD");
-		List<WebElement> lstElement = driver.findElements(
-				By.xpath("//android.widget.TextView[@resource-id='com.apozas.contactdiary:id/list_item']"));
+	public void showEvents() {
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		List<WebElement> lstElement = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(
+				By.xpath("//android.widget.TextView[@resource-id='com.apozas.contactdiary:id/list_item']")));
 
-//		String unknownChar = "👤   ";
-		String unknownChar = "📅   ";
+//		String unknownChar = "👤";
+		String unknownChar = "📅";
 		boolean checkData = false;
 		for (WebElement webElement : lstElement) {
-			String nama = webElement.getText().replace(unknownChar, "");
-			System.out.println(nama);
-			if (nama.equalsIgnoreCase("Sparing1")) {
+			String event = webElement.getText().replace(unknownChar, "").trim();
+			System.out.println(event);
+			if (event.equalsIgnoreCase("Tourney1")) {
 				checkData = true;
 				break;
 			}

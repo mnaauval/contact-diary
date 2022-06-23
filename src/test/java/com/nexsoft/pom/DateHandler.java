@@ -1,35 +1,29 @@
-package com.nexsoft.pom.handler;
+package com.nexsoft.pom;
 
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
-import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
-import io.appium.java_client.touch.offset.PointOption;
 
-@SuppressWarnings("deprecation")
 public class DateHandler {
 
 	private AndroidDriver driver;
-	private TouchAction touchAct;
 
 	@AndroidFindBy(id = "com.apozas.contactdiary:id/eventdate_input")
-	private WebElement pDateStart;
+	private WebElement pickDateStart;
 	@AndroidFindBy(id = "com.apozas.contactdiary:id/endeventdate_input")
-	private WebElement pDateEnd;
+	private WebElement pickDateEnd;
 	@AndroidFindBy(id = "android:id/date_picker_header_year")
-	private WebElement pYear;
+	private WebElement headYear;
 	@AndroidFindBy(id = "android:id/date_picker_header_date")
 	private WebElement headDate;
 	@AndroidFindBy(id = "android:id/prev")
@@ -37,65 +31,19 @@ public class DateHandler {
 	@AndroidFindBy(id = "android:id/next")
 	private WebElement nextYearBtn;
 	@AndroidFindBy(id = "android:id/button2")
-	private WebElement layCancel;
+	private WebElement btnCancel;
 	@AndroidFindBy(id = "android:id/button1")
-	private WebElement layOk;
+	private WebElement btnOk;
 
 	public DateHandler(AndroidDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(new AppiumFieldDecorator(driver), this);
-		touchAct = new TouchAction(driver);
-	}
-
-	public void dateStartHandler(int fromX, int fromY, int toX, int toY, int posX, int posY, String date, String month,
-			String year) {
-		pDateStart.click();
-		pYear.click();
-		touchAct.press(PointOption.point(fromX, fromY)).moveTo(PointOption.point(toX, toY)).release().perform();
-		touchAct.tap(PointOption.point(posX, posY)).perform();
-		driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
-		System.out.println(pYear.getText());
-		driver.findElement(
-				By.xpath("//android.view.View[@content-desc=" + "\"" + date + " " + month + " " + year + "\"" + "]"))
-				.click();
-		layOk.click();
-	}
-
-	public void dateStartHandler(String date, String month, String year) {
-		pDateStart.click();
-		driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
-		System.out.println(pYear.getText());
-		driver.findElement(
-				By.xpath("//android.view.View[@content-desc=" + "\"" + date + " " + month + " " + year + "\"" + "]"))
-				.click();
-		layOk.click();
-	}
-
-	public void dateEndHandler(int posX, int posY, String date, String month, String year) {
-		pDateEnd.click();
-		touchAct.tap(PointOption.point(posX, posY)).perform();
-		driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
-		System.out.println(pYear.getText());
-		driver.findElement(
-				By.xpath("//android.view.View[@content-desc=" + "\"" + date + " " + month + " " + year + "\"" + "]"))
-				.click();
-		layOk.click();
-	}
-
-	public void dateEndHandler(String date, String month, String year) {
-		pDateEnd.click();
-		driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
-		System.out.println(pYear.getText());
-		driver.findElement(
-				By.xpath("//android.view.View[@content-desc=" + "\"" + date + " " + month + " " + year + "\"" + "]"))
-				.click();
-		layOk.click();
 	}
 
 	public void setStartDate(String dateInput) {
-		pDateStart.click();
+		pickDateStart.click();
 		String date = headDate.getText();
-		String year = pYear.getText();
+		String year = headYear.getText();
 		System.out.println(date + " " + year);
 
 		Date dateCalendar = null;
@@ -152,15 +100,15 @@ public class DateHandler {
 		DateFormat dateFormat = new SimpleDateFormat("dd MMMM yyyy", Locale.US);
 		driver.findElement(By.xpath("//android.view.View[@content-desc=\"" + dateFormat.format(dateUsers) + "\"]"))
 				.click();
-		layOk.click();
+		btnOk.click();
 	}
-	
+
 	public void setEndDate(String dateInput) {
-		pDateEnd.click();
+		pickDateEnd.click();
 		String date = headDate.getText();
-		String year = pYear.getText();
+		String year = headYear.getText();
 		System.out.println(date + " " + year);
-		
+
 		Date dateCalendar = null;
 		try {
 //			EEE, MMM d yyyy
@@ -170,7 +118,7 @@ public class DateHandler {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
-		
+
 		Date dateUsers = null;
 		try {
 			dateUsers = new SimpleDateFormat("ddMMyyy", Locale.US).parse(dateInput);
@@ -178,16 +126,16 @@ public class DateHandler {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
-		
+
 		int currYear = dateCalendar.getYear();
 		int currMonth = dateCalendar.getMonth();
-		
+
 		int targetYear = dateUsers.getYear();
 		int targetMonth = dateUsers.getMonth();
-		
+
 		int stepYear = Math.abs((currYear - targetYear) * 12);
 		int stepMonth = Math.abs((currMonth - targetMonth));
-		
+
 		int step = stepYear + stepMonth;
 		System.out.println(stepYear + " " + stepMonth + " " + step);
 		if (currYear < targetYear) {
@@ -199,7 +147,7 @@ public class DateHandler {
 				prevYearBtn.click();
 			}
 		}
-		
+
 		if (stepYear == 0) {
 			if (currMonth < targetMonth) {
 				for (int i = 0; i < step; i++) {
@@ -211,11 +159,11 @@ public class DateHandler {
 				}
 			}
 		}
-		
+
 		DateFormat dateFormat = new SimpleDateFormat("dd MMMM yyyy", Locale.US);
 		driver.findElement(By.xpath("//android.view.View[@content-desc=\"" + dateFormat.format(dateUsers) + "\"]"))
-		.click();
-		layOk.click();
+				.click();
+		btnOk.click();
 	}
 
 }

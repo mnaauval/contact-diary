@@ -1,4 +1,4 @@
-package com.nexsoft.pom.activity;
+package com.nexsoft.pom;
 
 import java.util.ArrayList;
 import java.util.List;
