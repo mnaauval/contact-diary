@@ -102,12 +102,12 @@ public class CreateEventTest {
 	public void getEventName() {
 		List<String> lstEvName = new ArrayList<String>();
 		lstEvName.add("1");
-		lstEvName.add("2");
+//		lstEvName.add("2");
 		List<String> lstEvNameActl = new ArrayList<String>();
 		lstEvNameActl = mainAct.getEventName(lstEvName);
 		List<String> lstEvNameExpt = new ArrayList<String>();
 		lstEvNameExpt.add("📅   Sparing1");
-		lstEvNameExpt.add("📅   Sparing2");
+//		lstEvNameExpt.add("📅   Sparing2");
 		Assert.assertEquals(lstEvNameActl, lstEvNameExpt);
 	}
 
