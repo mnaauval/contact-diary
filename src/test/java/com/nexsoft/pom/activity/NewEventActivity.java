@@ -1,4 +1,4 @@
-package com.nexsoft.pom.pomactivity;
+package com.nexsoft.pom.activity;
 
 import java.util.List;
 
@@ -8,16 +8,13 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.nexsoft.pom.handler.DateHandler;
 
-import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 
-@SuppressWarnings("deprecation")
 public class NewEventActivity {
 
 	private AndroidDriver driver;
-	private TouchAction touchAct;
 	private DateHandler dateHdl;
 
 	@AndroidFindBy(id = "com.apozas.contactdiary:id/eventname_input")
@@ -70,7 +67,6 @@ public class NewEventActivity {
 	public NewEventActivity(AndroidDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(new AppiumFieldDecorator(driver), this);
-		touchAct = new TouchAction(driver);
 		dateHdl = new DateHandler(driver);
 	}
 
@@ -96,7 +92,10 @@ public class NewEventActivity {
 		btnOk.click();
 	}
 
-	public void setDate(String date) {
+	public void setStartDate(String date) {
+		dateHdl.setDate(date);
+	}
+	public void setEndDate(String date) {
 		dateHdl.setDate(date);
 	}
 }

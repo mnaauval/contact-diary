@@ -4,6 +4,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -101,7 +102,7 @@ public class DateHandler {
 		try {
 //			EEE, MMM d yyyy
 //			Wed, Jun 1 2022
-			dateCalendar = new SimpleDateFormat("EEE, MMM d yyyy").parse(date + " " + year);
+			dateCalendar = new SimpleDateFormat("EEE, MMM d yyyy", Locale.US).parse(date + " " + year);
 		} catch (ParseException e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -109,7 +110,7 @@ public class DateHandler {
 
 		Date dateUsers = null;
 		try {
-			dateUsers = new SimpleDateFormat("ddMMyyy").parse(dateInput);
+			dateUsers = new SimpleDateFormat("ddMMyyy", Locale.US).parse(dateInput);
 		} catch (ParseException e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -148,7 +149,7 @@ public class DateHandler {
 			}
 		}
 
-		DateFormat dateFormat = new SimpleDateFormat("dd MMMM yyyy");
+		DateFormat dateFormat = new SimpleDateFormat("dd MMMM yyyy", Locale.US);
 		driver.findElement(By.xpath("//android.view.View[@content-desc=\"" + dateFormat.format(dateUsers) + "\"]"))
 				.click();
 		layOk.click();

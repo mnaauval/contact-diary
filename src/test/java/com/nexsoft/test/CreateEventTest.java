@@ -10,8 +10,8 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import com.nexsoft.pom.activity.NewEventActivity;
 import com.nexsoft.pom.main.MainActivity;
-import com.nexsoft.pom.pomactivity.NewEventActivity;
 
 import io.appium.java_client.android.AndroidDriver;
 
@@ -53,8 +53,10 @@ public class CreateEventTest {
 		mainAct.clickNewEventBtn();
 		newEv.txtName.sendKeys("Sparing1");
 		newEv.txtPlace.sendKeys("Basecamp Tundra");
-		newEv.setStartDate("24", "June", "2022");
-		newEv.setEndDate("30", "June", "2022");
+//		newEv.setStartDate("24", "June", "2022");
+//		newEv.setEndDate("30", "June", "2022");
+		newEv.setStartDate("25062022");
+		newEv.setEndDate("05082022");
 		newEv.txtPeople.sendKeys("All Tundra Squad");
 		newEv.txtContact.sendKeys("089709870870");
 		newEv.typeIndoors.click();
@@ -69,8 +71,10 @@ public class CreateEventTest {
 		mainAct.clickNewEventBtn();
 		newEv.txtName.sendKeys("Sparing2");
 		newEv.txtPlace.sendKeys("Basecamp Tundra2");
-		newEv.setStartDate("24", "June", "2022");
-		newEv.setEndDate("30", "June", "2022");
+//		newEv.setStartDate("24", "June", "2022");
+//		newEv.setEndDate("30", "June", "2022");
+		newEv.setStartDate("25062022");
+		newEv.setEndDate("05082022");
 		newEv.txtPeople.sendKeys("All Tundra2 Squad");
 		newEv.txtContact.sendKeys("089709870870");
 		newEv.typeIndoors.click();
@@ -83,7 +87,8 @@ public class CreateEventTest {
 	public void createEventTest() {
 		mainAct.clickAddBtn();
 		mainAct.clickNewEventBtn();
-		newEv.setDate("05072022");
+		newEv.setStartDate("05072022");
+		newEv.setEndDate("05082022");
 	}
 
 	@Test(priority = 4)
@@ -93,6 +98,7 @@ public class CreateEventTest {
 		lstEvName.add("2");
 		List<String> lstEvNameAct = new ArrayList<String>();
 		lstEvNameAct = mainAct.getEventName(lstEvName);
+
 		List<String> lstEvNameExp = new ArrayList<String>();
 		lstEvNameExp.add("📅   Sparing1");
 		lstEvNameExp.add("📅   Sparing2");
