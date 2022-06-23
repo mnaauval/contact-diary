@@ -156,7 +156,7 @@ public class DateHandler {
 	}
 	
 	public void setEndDate(String dateInput) {
-		pDateStart.click();
+		pDateEnd.click();
 		String date = headDate.getText();
 		String year = pYear.getText();
 		System.out.println(date + " " + year);
