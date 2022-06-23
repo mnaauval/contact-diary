@@ -5,7 +5,9 @@
     <classes>
       <class name="com.nexsoft.test.CreateEventTest">
         <methods>
+          <include name="createEvent1"/>
           <include name="getEventName"/>
+          <include name="createEvent2"/>
           <include name="init"/>
         </methods>
       </class> <!-- com.nexsoft.test.CreateEventTest -->

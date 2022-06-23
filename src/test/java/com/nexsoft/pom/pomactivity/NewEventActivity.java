@@ -1,20 +1,17 @@
-package com.nexsoft.pom.newevent;
+package com.nexsoft.pom.pomactivity;
 
-import java.time.Duration;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+import com.nexsoft.pom.handler.DateHandler;
 
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
-import io.appium.java_client.touch.WaitOptions;
-import io.appium.java_client.touch.offset.PointOption;
 
 @SuppressWarnings("deprecation")
 public class NewEventActivity {
@@ -89,13 +86,11 @@ public class NewEventActivity {
 
 	public void setMitigation(List<String> choice) {
 		fieldMitigate.click();
-
 		for (String no : choice) {
-
 			String xpath = "/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/"
-					+ "android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.ListView/"
+					+ "android.widget.FrameLayout/android.widget.LinearLayout/"
+					+ "android.widget.FrameLayout/android.widget.ListView/"
 					+ "android.widget.CheckedTextView[" + no + "]";
-
 			driver.findElement(By.xpath(xpath)).click();
 		}
 		btnOk.click();

@@ -43,7 +43,6 @@ public class MainActivity {
 	public <T> List<String> getEventName(List<String> lstEv) {
 		List<String> lstEvName = new ArrayList<String>();
 		for (String i : lstEv) {
-//			String xpath = "//android.widget.LinearLayout[" + i + "]/android.widget.LinearLayout/android.widget.TextView";
 			String xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout"
 					+ "/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout"
 					+ "/android.view.ViewGroup/android.view.ViewGroup/android.widget.LinearLayout[1]"
