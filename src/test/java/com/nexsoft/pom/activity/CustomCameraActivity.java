@@ -32,7 +32,7 @@ public class CustomCameraActivity {
 	}
 
 	public void takePicture() {
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("com.dimatt.camtest:id/btn_capture1"))).click();
-		driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
 	}
 }

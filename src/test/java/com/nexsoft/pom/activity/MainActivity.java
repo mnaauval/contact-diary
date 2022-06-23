@@ -20,6 +20,8 @@ public class MainActivity {
 	private AndroidDriver driver;
 	private TouchAction touchAct;
 
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Contact Diary']")
+	public WebElement lblDiary;
 	@AndroidFindBy(id = "com.apozas.contactdiary:id/fab")
 //	@AndroidFindBy(xpath = "//android.widget.ImageButton[@index='3']")
 	private WebElement btnAddEvent;

@@ -17,6 +17,8 @@ public class NewEventActivity {
 	private AndroidDriver driver;
 	private DateHandler dateHdl;
 
+	@AndroidFindBy(id = "//android.widget.TextView[@text='New event']")
+	public WebElement lblNew;
 	@AndroidFindBy(id = "com.apozas.contactdiary:id/eventname_input")
 	public WebElement txtName;
 	@AndroidFindBy(id = "com.apozas.contactdiary:id/eventplace_input")
