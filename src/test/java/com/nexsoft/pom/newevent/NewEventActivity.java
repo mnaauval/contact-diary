@@ -1,4 +1,4 @@
-package com.nexsoft.pom;
+package com.nexsoft.pom.newevent;
 
 import java.time.Duration;
 import java.util.List;

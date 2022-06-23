@@ -1,4 +1,4 @@
-package com.nexsoft.pom;
+package com.nexsoft.pom.newevent;
 
 import java.text.DateFormat;
 import java.text.ParseException;
