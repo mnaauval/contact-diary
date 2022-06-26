@@ -5,6 +5,7 @@
 
 		<classes>
 			<class name="com.nexsoft.runner.NewEventRunner"></class>
+			<class name="com.nexsoft.runner.NewContactRunner"></class>
 		</classes>
 
 	</test>

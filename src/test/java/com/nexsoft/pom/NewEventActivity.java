@@ -69,17 +69,17 @@ public class NewEventActivity extends DateHandler {
 		this.driver = driver;
 		PageFactory.initElements(new AppiumFieldDecorator(driver), this);
 	}
-
+	
 	@Override
-	public final void setStartDate(String dateInput) {
+	public void setStartDateEvent(String dateInput) {
 		// TODO Auto-generated method stub
-		super.setStartDate(dateInput);
+		super.setStartDateEvent(dateInput);
 	}
-
+	
 	@Override
-	public final void setEndDate(String dateInput) {
+	public void setEndDateEvent(String dateInput) {
 		// TODO Auto-generated method stub
-		super.setEndDate(dateInput);
+		super.setEndDateEvent(dateInput);
 	}
 
 	public void setMitigation(List<String> choice) {
@@ -87,8 +87,8 @@ public class NewEventActivity extends DateHandler {
 		for (String no : choice) {
 			String xpath = "/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/"
 					+ "android.widget.FrameLayout/android.widget.LinearLayout/"
-					+ "android.widget.FrameLayout/android.widget.ListView/" + "android.widget.CheckedTextView[" + no
-					+ "]";
+					+ "android.widget.FrameLayout/android.widget.ListView/" 
+					+ "android.widget.CheckedTextView[" + no + "]";
 			driver.findElement(By.xpath(xpath)).click();
 		}
 		btnOk.click();

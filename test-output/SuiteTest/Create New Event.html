@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Create New Event</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>1/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Thu Jun 23 21:04:53 ICT 2022</td>
+<td>Started on:</td><td>Mon Jun 27 00:12:07 ICT 2022</td>
 </tr>
-<tr><td>Total time:</td><td>35 seconds (35374 ms)</td>
+<tr><td>Total time:</td><td>70 seconds (70352 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -77,20 +77,64 @@ function toggleAllBoxes() {
 </tr>
 <tr>
 <td title='com.nexsoft.runner.NewEventRunner.runScenario()'><b>runScenario</b><br>Test class: com.nexsoft.runner.NewEventRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Create new event with data", "Create new event"</td>
-<td><div><pre>java.lang.AssertionError: expected [true] but found [false]
-	at com.nexsoft.definition.NewEventDefine.showUsers(NewEventDefine.java:131)
-	at ?.User showed in Main Activity(file:///D:/Project/Java/TestNG/ContactDiary/src/test/resources/NewEvent.feature:15)
-... Removed 4 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1618230491", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1618230491'><pre>java.lang.AssertionError: expected [true] but found [false]
-	at org.testng.Assert.fail(Assert.java:110)
-	at org.testng.Assert.failNotEquals(Assert.java:1413)
-	at org.testng.Assert.assertTrue(Assert.java:56)
-	at org.testng.Assert.assertTrue(Assert.java:66)
-	at com.nexsoft.definition.NewEventDefine.showUsers(NewEventDefine.java:131)
-	at ?.User showed in Main Activity(file:///D:/Project/Java/TestNG/ContactDiary/src/test/resources/NewEvent.feature:15)
+<td><div><pre>org.openqa.selenium.SessionNotCreatedException: Could not start a new session. Response code 500. Message: An unknown server-side error occurred while processing the command. Original error: Cannot start the &apos;com.apozas.contactdiary&apos; application. Visit https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/android/activity-startup.md for troubleshooting. Original error: Error executing adbExec. Original error: &apos;Command &apos;C:\\Users\\nexsoft\\AppData\\Local\\Android\\Sdk\\platform-tools\\adb.exe -P 5037 -s 52c5c997 shell am start -W -n com.apozas.contactdiary/com.apozas.contactdiary.MainActivity -S -a android.intent.action.MAIN -c android.intent.category.LAUNCHER -f 0x10200000&apos; timed out after 20000ms&apos;. Try to increase the 20000ms adb execution timeout represented by &apos;adbExecTimeout&apos; capability
+Build info: version: &apos;4.3.0&apos;, revision: &apos;a4995e2c09*&apos;
+System info: host: &apos;DESKTOP-S76SA9N&apos;, ip: &apos;192.168.1.164&apos;, os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;11.0.15&apos;
+Driver info: io.appium.java_client.android.AndroidDriver
+Command: [null, newSession {capabilities=[{appium:appActivity=com.apozas.contactdiary.MainActivity, appium:appPackage=com.apozas.contactdiary, platformName=ANDROID, appium:platformVersion=11, appium:uid=52c5c997}], desiredCapabilities=Capabilities {appActivity: com.apozas.contactdiary.Mai..., appPackage: com.apozas.contactdiary, platformName: ANDROID, platformVersion: 11, uid: 52c5c997}}]
+Capabilities {}
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:144)
+	at io.appium.java_client.remote.AppiumProtocolHandshake.createSession(AppiumProtocolHandshake.java:126)
+	at io.appium.java_client.remote.AppiumProtocolHandshake.createSession(AppiumProtocolHandshake.java:102)
+	at io.appium.java_client.remote.AppiumCommandExecutor.createSession(AppiumCommandExecutor.java:146)
+	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:180)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:569)
+	at io.appium.java_client.AppiumDriver.startSession(AppiumDriver.java:224)
+	at org.openqa.selenium.remote.RemoteWebDriver.&lt;init&gt;(RemoteWebDriver.java:179)
+	at io.appium.java_client.AppiumDriver.&lt;init&gt;(AppiumDriver.java:79)
+	at io.appium.java_client.AppiumDriver.&lt;init&gt;(AppiumDriver.java:87)
+	at io.appium.java_client.android.AndroidDriver.&lt;init&gt;(AndroidDriver.java:116)
+	at com.nexsoft.definitions.newevent.NewEventDefine.init(NewEventDefine.java:49)
+... Removed 4 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1642905321", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1642905321'><pre>org.openqa.selenium.SessionNotCreatedException: Could not start a new session. Response code 500. Message: An unknown server-side error occurred while processing the command. Original error: Cannot start the &apos;com.apozas.contactdiary&apos; application. Visit https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/android/activity-startup.md for troubleshooting. Original error: Error executing adbExec. Original error: &apos;Command &apos;C:\\Users\\nexsoft\\AppData\\Local\\Android\\Sdk\\platform-tools\\adb.exe -P 5037 -s 52c5c997 shell am start -W -n com.apozas.contactdiary/com.apozas.contactdiary.MainActivity -S -a android.intent.action.MAIN -c android.intent.category.LAUNCHER -f 0x10200000&apos; timed out after 20000ms&apos;. Try to increase the 20000ms adb execution timeout represented by &apos;adbExecTimeout&apos; capability
+Build info: version: &apos;4.3.0&apos;, revision: &apos;a4995e2c09*&apos;
+System info: host: &apos;DESKTOP-S76SA9N&apos;, ip: &apos;192.168.1.164&apos;, os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;11.0.15&apos;
+Driver info: io.appium.java_client.android.AndroidDriver
+Command: [null, newSession {capabilities=[{appium:appActivity=com.apozas.contactdiary.MainActivity, appium:appPackage=com.apozas.contactdiary, platformName=ANDROID, appium:platformVersion=11, appium:uid=52c5c997}], desiredCapabilities=Capabilities {appActivity: com.apozas.contactdiary.Mai..., appPackage: com.apozas.contactdiary, platformName: ANDROID, platformVersion: 11, uid: 52c5c997}}]
+Capabilities {}
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:144)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at io.appium.java_client.remote.AppiumProtocolHandshake.createSession(AppiumProtocolHandshake.java:126)
+	at io.appium.java_client.remote.AppiumProtocolHandshake.createSession(AppiumProtocolHandshake.java:102)
+	at io.appium.java_client.remote.AppiumCommandExecutor.createSession(AppiumCommandExecutor.java:146)
+	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:180)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:569)
+	at io.appium.java_client.AppiumDriver.startSession(AppiumDriver.java:224)
+	at org.openqa.selenium.remote.RemoteWebDriver.&lt;init&gt;(RemoteWebDriver.java:179)
+	at io.appium.java_client.AppiumDriver.&lt;init&gt;(AppiumDriver.java:79)
+	at io.appium.java_client.AppiumDriver.&lt;init&gt;(AppiumDriver.java:87)
+	at io.appium.java_client.android.AndroidDriver.&lt;init&gt;(AndroidDriver.java:116)
+	at com.nexsoft.definitions.newevent.NewEventDefine.init(NewEventDefine.java:49)
 </pre></div></td>
-<td>32</td>
-<td>com.nexsoft.runner.NewEventRunner@6be968ce</td></tr>
+<td>34</td>
+<td>com.nexsoft.runner.NewEventRunner@7c37508a</td></tr>
+</table><p>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td><b>Attribute(s)</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='com.nexsoft.runner.NewContactRunner.runScenario()'><b>runScenario</b><br>Test class: com.nexsoft.runner.NewContactRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Create new contact with data", "Create new contact"</td>
+<td></td>
+<td>30</td>
+<td>com.nexsoft.runner.NewContactRunner@609e8838</td></tr>
 </table><p>
 </body>
 </html>

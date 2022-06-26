@@ -1,27 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="2" passed="1" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2022-06-23T23:38:59 ICT" name="Default suite" finished-at="2022-06-23T23:39:36 ICT" duration-ms="37148">
+  <suite started-at="2022-06-27T00:12:07 ICT" name="SuiteTest" finished-at="2022-06-27T00:13:18 ICT" duration-ms="70352">
     <groups>
       <group name="cucumber">
-        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nexsoft.runner.NewEventRunner@305ffe9e]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
+        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nexsoft.runner.NewContactRunner@609e8838]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
+        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nexsoft.runner.NewEventRunner@7c37508a]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
       </group> <!-- cucumber -->
     </groups>
-    <test started-at="2022-06-23T23:38:59 ICT" name="Default test" finished-at="2022-06-23T23:39:36 ICT" duration-ms="37148">
-      <class name="com.nexsoft.runner.NewEventRunner">
-        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:com.nexsoft.runner.NewEventRunner@305ffe9e]" started-at="2022-06-23T23:38:59 ICT" name="setUpClass" finished-at="2022-06-23T23:39:00 ICT" duration-ms="605" status="PASS">
+    <test started-at="2022-06-27T00:12:07 ICT" name="Create New Event" finished-at="2022-06-27T00:13:18 ICT" duration-ms="70352">
+      <class name="com.nexsoft.runner.NewContactRunner">
+        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:com.nexsoft.runner.NewContactRunner@609e8838]" started-at="2022-06-27T00:12:45 ICT" name="setUpClass" finished-at="2022-06-27T00:12:45 ICT" duration-ms="18" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[org.testng.TestRunner@49580ca8]]>
+                <![CDATA[org.testng.TestRunner@1a2ac487]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nexsoft.runner.NewEventRunner@305ffe9e]" started-at="2022-06-23T23:39:00 ICT" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2022-06-23T23:39:34 ICT" duration-ms="34317" status="PASS">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nexsoft.runner.NewContactRunner@609e8838]" started-at="2022-06-27T00:12:45 ICT" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2022-06-27T00:13:16 ICT" duration-ms="30791" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Create new contact with data"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Create new contact"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:com.nexsoft.runner.NewContactRunner@609e8838]" started-at="2022-06-27T00:13:16 ICT" name="tearDownClass" finished-at="2022-06-27T00:13:18 ICT" duration-ms="1996" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownClass -->
+      </class> <!-- com.nexsoft.runner.NewContactRunner -->
+      <class name="com.nexsoft.runner.NewEventRunner">
+        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:com.nexsoft.runner.NewEventRunner@7c37508a]" started-at="2022-06-27T00:12:07 ICT" name="setUpClass" finished-at="2022-06-27T00:12:08 ICT" duration-ms="728" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@1a2ac487]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpClass -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nexsoft.runner.NewEventRunner@7c37508a]" started-at="2022-06-27T00:12:08 ICT" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2022-06-27T00:12:43 ICT" duration-ms="34808" status="FAIL">
           <params>
             <param index="0">
               <value>
@@ -34,14 +68,49 @@
               </value>
             </param>
           </params>
+          <exception class="org.openqa.selenium.SessionNotCreatedException">
+            <message>
+              <![CDATA[Could not start a new session. Response code 500. Message: An unknown server-side error occurred while processing the command. Original error: Cannot start the 'com.apozas.contactdiary' application. Visit https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/android/activity-startup.md for troubleshooting. Original error: Error executing adbExec. Original error: 'Command 'C:\\Users\\nexsoft\\AppData\\Local\\Android\\Sdk\\platform-tools\\adb.exe -P 5037 -s 52c5c997 shell am start -W -n com.apozas.contactdiary/com.apozas.contactdiary.MainActivity -S -a android.intent.action.MAIN -c android.intent.category.LAUNCHER -f 0x10200000' timed out after 20000ms'. Try to increase the 20000ms adb execution timeout represented by 'adbExecTimeout' capability
+Build info: version: '4.3.0', revision: 'a4995e2c09*'
+System info: host: 'DESKTOP-S76SA9N', ip: '192.168.1.164', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.15'
+Driver info: io.appium.java_client.android.AndroidDriver
+Command: [null, newSession {capabilities=[{appium:appActivity=com.apozas.contactdiary.MainActivity, appium:appPackage=com.apozas.contactdiary, platformName=ANDROID, appium:platformVersion=11, appium:uid=52c5c997}], desiredCapabilities=Capabilities {appActivity: com.apozas.contactdiary.Mai..., appPackage: com.apozas.contactdiary, platformName: ANDROID, platformVersion: 11, uid: 52c5c997}}]
+Capabilities {}]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.SessionNotCreatedException: Could not start a new session. Response code 500. Message: An unknown server-side error occurred while processing the command. Original error: Cannot start the 'com.apozas.contactdiary' application. Visit https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/android/activity-startup.md for troubleshooting. Original error: Error executing adbExec. Original error: 'Command 'C:\\Users\\nexsoft\\AppData\\Local\\Android\\Sdk\\platform-tools\\adb.exe -P 5037 -s 52c5c997 shell am start -W -n com.apozas.contactdiary/com.apozas.contactdiary.MainActivity -S -a android.intent.action.MAIN -c android.intent.category.LAUNCHER -f 0x10200000' timed out after 20000ms'. Try to increase the 20000ms adb execution timeout represented by 'adbExecTimeout' capability
+Build info: version: '4.3.0', revision: 'a4995e2c09*'
+System info: host: 'DESKTOP-S76SA9N', ip: '192.168.1.164', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.15'
+Driver info: io.appium.java_client.android.AndroidDriver
+Command: [null, newSession {capabilities=[{appium:appActivity=com.apozas.contactdiary.MainActivity, appium:appPackage=com.apozas.contactdiary, platformName=ANDROID, appium:platformVersion=11, appium:uid=52c5c997}], desiredCapabilities=Capabilities {appActivity: com.apozas.contactdiary.Mai..., appPackage: com.apozas.contactdiary, platformName: ANDROID, platformVersion: 11, uid: 52c5c997}}]
+Capabilities {}
+at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:144)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+at io.appium.java_client.remote.AppiumProtocolHandshake.createSession(AppiumProtocolHandshake.java:126)
+at io.appium.java_client.remote.AppiumProtocolHandshake.createSession(AppiumProtocolHandshake.java:102)
+at io.appium.java_client.remote.AppiumCommandExecutor.createSession(AppiumCommandExecutor.java:146)
+at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:180)
+at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:569)
+at io.appium.java_client.AppiumDriver.startSession(AppiumDriver.java:224)
+at org.openqa.selenium.remote.RemoteWebDriver.<init>(RemoteWebDriver.java:179)
+at io.appium.java_client.AppiumDriver.<init>(AppiumDriver.java:79)
+at io.appium.java_client.AppiumDriver.<init>(AppiumDriver.java:87)
+at io.appium.java_client.android.AndroidDriver.<init>(AndroidDriver.java:116)
+at com.nexsoft.definitions.newevent.NewEventDefine.init(NewEventDefine.java:49)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.SessionNotCreatedException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:com.nexsoft.runner.NewEventRunner@305ffe9e]" started-at="2022-06-23T23:39:34 ICT" name="tearDownClass" finished-at="2022-06-23T23:39:36 ICT" duration-ms="2163" status="PASS">
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:com.nexsoft.runner.NewEventRunner@7c37508a]" started-at="2022-06-27T00:12:43 ICT" name="tearDownClass" finished-at="2022-06-27T00:12:45 ICT" duration-ms="1954" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->
       </class> <!-- com.nexsoft.runner.NewEventRunner -->
-    </test> <!-- Default test -->
-  </suite> <!-- Default suite -->
+    </test> <!-- Create New Event -->
+  </suite> <!-- SuiteTest -->
 </testng-results>

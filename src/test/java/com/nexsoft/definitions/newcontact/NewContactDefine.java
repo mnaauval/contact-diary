@@ -1,37 +1,32 @@
-package com.nexsoft.definitions;
-
-import static org.testng.Assert.assertTrue;
+package com.nexsoft.definitions.newcontact;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import com.nexsoft.pom.MainActivity;
-import com.nexsoft.pom.NewEventActivity;
+import com.nexsoft.pom.NewContactActivity;
 
 import io.appium.java_client.android.AndroidDriver;
+import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class NewEventDefine {
+public class NewContactDefine {
 
 	private AndroidDriver driver;
 	private DesiredCapabilities capabilities;
 	private MainActivity mainAct;
-	private NewEventActivity newEv;
+	private NewContactActivity newContact;
 	private List<String> choice;
 	private WebDriverWait wait;
 
@@ -52,10 +47,10 @@ public class NewEventDefine {
 			e.printStackTrace();
 		}
 		mainAct = new MainActivity(driver);
-		newEv = new NewEventActivity(driver);
+		newContact = new NewContactActivity(driver);
 		choice = new ArrayList<String>();
-		choice.add("1");
-		choice.add("3");
+		choice.add("2");
+		choice.add("4");
 		wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 	}
 
@@ -71,79 +66,58 @@ public class NewEventDefine {
 	public void clickAddBtn() {
 		mainAct.clickAddBtn();
 	}
-
-	@And("User tap create new event button")
+	
+	@And("User tap create new contact button")
 	public void clickNewEvent() {
-		mainAct.clickNewEventBtn();
+		mainAct.clickNewContacttBtn();
 	}
-
-	@And("User go to New Event Activity")
-	public void atEventActivity() {
-		String actl = newEv.lblNew.getText();
-		String expt = "New event";
+	
+	@And("User go to New Contact Activity")
+	public void atContactActivity() {
+		String actl = newContact.lblNew.getText();
+		String expt = "New contact";
 		Assert.assertEquals(actl, expt);
 		System.out.println(actl);
 	}
 
-	@And("User input even name {string} and event place {string}")
+	@And("User input contact name {string} and place {string}")
 	public void inputNameAndPlace(String name, String place) {
-		newEv.txtName.sendKeys(name);
-		newEv.txtPlace.sendKeys(place);
+		newContact.txtName.sendKeys(name);
+		newContact.txtPlace.sendKeys(place);
 		System.out.println(name);
 		System.out.println(place);
 	}
 
 	@And("User input start date {string} and end date {string}")
 	public void inputDate(String start, String end) {
-		newEv.setStartDate(start);
-		newEv.setEndDate(end);
+		newContact.setStartDateContact(start);
+		newContact.setEndDateContact(end);
 		System.out.println(start);
 		System.out.println(end);
 	}
-
-	@And("User input companions {string} and phone {string}")
-	public void inputPeopleAndPhone(String people, String phone) {
-		newEv.txtPeople.sendKeys(people);
-		newEv.txtContact.sendKeys(phone);
-		System.out.println(people);
+	
+	@And("User input phone {string} and notes {string}")
+	public void inputPhoneAndNotes(String phone, String notes) {
+		newContact.txtPhone.sendKeys(phone);
+		newContact.txtNotes.sendKeys(notes);
 		System.out.println(phone);
-	}
-
-	@And("User choose encounter type and prevention type")
-	public void inputPeopleAndPhone() {
-		newEv.typeIndoors.click();
-		newEv.setMitigation(choice);
-	}
-
-	@And("User input notes {string}")
-	public void inputNotes(String notes) {
-		newEv.txtNotes.sendKeys(notes);
 		System.out.println(notes);
 	}
-
-	@Then("User save new event")
+	
+	@And("User choose known and type")
+	public void inputRadioAndCheckbox() {
+		newContact.typeIndoors.click();
+		newContact.knownYes.click();
+		newContact.setMitigation(choice);
+	}
+	
+	@Then("User save new contact")
 	public void clickBtnSave() {
-		newEv.btnSave.click();
+		newContact.btnSave.click();
 	}
-
-	@And("User showed in Main Activity")
-	public void showEvents() {
-		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-		List<WebElement> lstElement = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(
-				By.xpath("//android.widget.TextView[@resource-id='com.apozas.contactdiary:id/list_item']")));
-
-//		String unknownChar = "👤";
-		String unknownChar = "📅";
-		boolean checkData = false;
-		for (WebElement webElement : lstElement) {
-			String event = webElement.getText().replace(unknownChar, "").trim();
-			System.out.println(event);
-			if (event.equalsIgnoreCase("Tourney1")) {
-				checkData = true;
-				break;
-			}
-		}
-		assertTrue(checkData);
+	
+	@After
+	public void closeConn() {
+		driver.quit();
 	}
-
 }

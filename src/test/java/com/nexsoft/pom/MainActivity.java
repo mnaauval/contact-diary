@@ -45,6 +45,15 @@ public class MainActivity {
 			touchAct.tap(PointOption.point(950, 1520)).perform();
 		}
 	}
+	
+	public void clickNewContacttBtn() {
+		System.out.println("New Event Btn");
+		if (driver.getCapabilities().getCapability("uid").toString().equals("52c5c997")) {
+			touchAct.tap(PointOption.point(940, 2040)).perform();
+		} else if (driver.getCapabilities().getCapability("uid").toString().equals("emulator-5554")) {
+//			touchAct.tap(PointOption.point(950, 1520)).perform();
+		}
+	}
 
 	public <T> List<String> getEventName(List<String> lstEv) {
 		List<String> lstEvName = new ArrayList<String>();
