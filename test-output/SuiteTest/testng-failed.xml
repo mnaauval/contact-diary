@@ -10,6 +10,13 @@
           <include name="tearDownClass"/>
         </methods>
       </class> <!-- com.nexsoft.runner.NewEventRunner -->
+      <class name="com.nexsoft.runner.NewContactRunner">
+        <methods>
+          <include name="setUpClass"/>
+          <include name="tearDownClass"/>
+          <include name="runScenario" invocation-numbers="0"/>
+        </methods>
+      </class> <!-- com.nexsoft.runner.NewContactRunner -->
     </classes>
   </test> <!-- Create New Event(failed) -->
 </suite> <!-- Failed suite [SuiteTest] -->

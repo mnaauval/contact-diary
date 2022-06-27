@@ -11,3 +11,4 @@ Feature: Create new contact
     And User input phone "09871234" and notes "Mid player"
     And User choose known and type
     Then User save new contact
+    And Contact showed in Main Activity

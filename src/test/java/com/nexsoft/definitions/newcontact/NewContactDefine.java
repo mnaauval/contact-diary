@@ -1,12 +1,18 @@
 package com.nexsoft.definitions.newcontact;
 
+import static org.testng.Assert.assertTrue;
+
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
@@ -113,11 +119,32 @@ public class NewContactDefine {
 	
 	@Then("User save new contact")
 	public void clickBtnSave() {
+//		newContact.screenshoot(driver);
 		newContact.btnSave.click();
+	}
+	
+	@And("Contact showed in Main Activity")
+	public void showContacts() {
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		List<WebElement> lstElement = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(
+				By.xpath("//android.widget.TextView[@resource-id='com.apozas.contactdiary:id/list_item']")));
+
+		String unknownChar = "👤";
+		boolean checkData = false;
+		for (WebElement webElement : lstElement) {
+			String contact = webElement.getText().replace(unknownChar, "").trim();
+			System.out.println(contact);
+			if (contact.equalsIgnoreCase("Flopson")) {
+				checkData = true;
+				break;
+			}
+		}
+		assertTrue(checkData);
 	}
 	
 	@After
 	public void closeConn() {
+		newContact.screenshoot(driver);
 		driver.quit();
 	}
 }

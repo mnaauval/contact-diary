@@ -10,7 +10,7 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 
-public class NewEventActivity extends DateHandler {
+public class NewEventActivity extends Utilities {
 
 	private AndroidDriver driver;
 
@@ -68,18 +68,6 @@ public class NewEventActivity extends DateHandler {
 		// TODO Auto-generated constructor stub
 		this.driver = driver;
 		PageFactory.initElements(new AppiumFieldDecorator(driver), this);
-	}
-	
-	@Override
-	public void setStartDateEvent(String dateInput) {
-		// TODO Auto-generated method stub
-		super.setStartDateEvent(dateInput);
-	}
-	
-	@Override
-	public void setEndDateEvent(String dateInput) {
-		// TODO Auto-generated method stub
-		super.setEndDateEvent(dateInput);
 	}
 
 	public void setMitigation(List<String> choice) {

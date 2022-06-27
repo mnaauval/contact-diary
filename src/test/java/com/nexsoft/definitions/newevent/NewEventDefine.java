@@ -124,6 +124,7 @@ public class NewEventDefine {
 
 	@Then("User save new event")
 	public void clickBtnSave() {
+//		newEv.screenshoot(driver);
 		newEv.btnSave.click();
 	}
 
@@ -133,7 +134,6 @@ public class NewEventDefine {
 		List<WebElement> lstElement = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(
 				By.xpath("//android.widget.TextView[@resource-id='com.apozas.contactdiary:id/list_item']")));
 
-//		String unknownChar = "👤";
 		String unknownChar = "📅";
 		boolean checkData = false;
 		for (WebElement webElement : lstElement) {
@@ -149,6 +149,7 @@ public class NewEventDefine {
 	
 	@After
 	public void closeConn() {
+		newEv.screenshoot(driver);
 		driver.quit();
 	}
 }
